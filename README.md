@@ -17,7 +17,7 @@ Other Target Settings
 - Embed in Application: Runner
 
 
-## Screen shoot of Widget in Notification Center
+## Screen shot of Widget in Notification Center
 
 ![Screen Shot](screen.png?raw=true "Flutter with Swift Today Extension")
 
