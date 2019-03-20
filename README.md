@@ -19,7 +19,7 @@ Other Target Settings
 
 ## Screen shoot of Widget in Notification Center
 
-
+![Screen Shot](screen.png?raw=true "Flutter with Swift Today Extension")
 
 
 ## Getting Started
