@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart' as p;
 
 void main() => runApp(MyApp());
 
@@ -46,7 +48,30 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() {
+
+  void _incrementCounter() async {
+
+    // Get a location using getDatabasesPath
+    var databasesPath = await getDatabasesPath();
+    String path = p.join(databasesPath, 'demo.db');
+
+    // Delete the database
+    await deleteDatabase(path);
+    print("Database deleted");
+
+    // open the database
+    Database database = await openDatabase(path, version: 1,
+        onCreate: (Database db, int version) async {
+          // When creating the db, create the table
+          await db.execute('CREATE TABLE Test (id INTEGER PRIMARY KEY, name TEXT, value INTEGER, num REAL)');
+          print('Database created');
+        }
+    );
+
+    // Close the database
+    await database.close();
+
+
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
